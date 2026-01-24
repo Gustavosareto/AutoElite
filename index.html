@@ -2,8 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AutoElite - Concessionária de carros premium e esportivos. Encontre BMW, Porsche, Audi e muito mais com o melhor preço e condições de financiamento.">
-    <meta name="keywords" content="carros de luxo, carros esportivos, BMW, Porsche, Audi, AutoElite, compra de carros, financiamento veicular">
+    <meta name="description" content="AutoElite - Concessionária de carros premium e esportivos. Encontre Porsche 911 GT3, BMW M, Audi RS e outros modelos exclusivos com as melhores condições.">
+    <meta name="keywords" content="Porsche 911 GT3, carros de luxo, carros esportivos, BMW M3, Audi RS, AutoElite, compra de carros premium, São Paulo">
     <meta name="author" content="AutoElite">
     <meta name="robots" content="index, follow">
     
@@ -21,7 +21,7 @@
     <meta property="twitter:description" content="A melhor seleção de veículos premium e esportivos com atendimento exclusivo.">
     <meta property="twitter:image" content="https://autoelite.com.br/assents/outdor.webp">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; video-src 'self' data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://sketchfab.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com https://sketchfab.com data:; video-src 'self' data:; frame-src https://sketchfab.com; connect-src 'self' https://sketchfab.com blob:;">
     <title>AutoElite | Experiência Premium BMW & Performance</title>
     
     <!-- JSON-LD Structured Data for SEO -->
@@ -33,6 +33,7 @@
       "image": "https://autoelite.com.br/assents/outdor.webp",
       "url": "https://autoelite.com.br",
       "telephone": "+5511000000000",
+      "description": "Concessionária especializada em Porsche, BMW e modelos de alta performance.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Av. Europa, 1500",
@@ -46,27 +47,16 @@
         "latitude": -23.57,
         "longitude": -46.67
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/autoelite",
-        "https://www.instagram.com/autoelite"
-      ]
+      "brand": {
+        "@type": "Brand",
+        "name": "Porsche, BMW, Audi"
+      }
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="styles.css" rel="stylesheet">
     <!-- Inputmask Library -->
     <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
@@ -157,7 +147,7 @@
 
     <!-- Hero Section -->
     <header class="relative h-[85vh] w-full overflow-hidden bg-black">
-        <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline class="absolute inset-0 w-full h-full object-cover">
+        <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assents/outdor.webp" class="absolute inset-0 w-full h-full object-cover">
             <source src="/assents/video-carro.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 hero-gradient z-10 opacity-30"></div>
@@ -170,6 +160,81 @@
             </div>
         </div>
     </header>
+
+    <!-- 3D Model Section -->
+    <section class="py-24 bg-[#050505] overflow-hidden border-b border-zinc-900 relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-600/50 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <!-- Left: 3D Model -->
+                <div class="lg:w-3/5 w-full reveal">
+                    <div class="relative w-full h-[500px] md:h-[600px]">
+                        <div id="bmw-3d-container" class="w-full h-full relative cursor-grab active:cursor-grabbing">
+                            <!-- O modelo será renderizado aqui -->
+                            <div id="model-loader" class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="flex flex-col items-center">
+                                    <div class="pneu-loader mb-4 border-blue-600/30 border-t-blue-600"></div>
+                                    <span class="text-blue-500 text-[10px] font-bold tracking-[0.3em] uppercase">Iniciando...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Specifications -->
+                <div class="lg:w-2/5 w-full flex flex-col reveal stagger-2">
+                    <span class="text-blue-500 font-bold tracking-[0.4em] text-[10px] mb-4 block uppercase italic">Performance Heritage</span>
+                    <h2 class="text-5xl md:text-6xl font-light text-white font-orbitron leading-tight mb-8">PORSCHE <br><span class="font-bold text-blue-600 italic">911 GT3.</span></h2>
+                    
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-10 font-light">
+                        A essência das pistas nas ruas. O Porsche 911 GT3 combina um motor aspirado de alta rotação com uma aerodinâmica refinada, entregando uma precisão inigualável em cada curva.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 mb-10">
+                        <!-- Spec Item -->
+                        <div class="flex items-center justify-between p-5 rounded-2xl bg-zinc-900/50 border border-white/5 group hover:border-blue-600/30 transition-all duration-500">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Potência Máxima</span>
+                            </div>
+                            <span class="text-lg font-bold text-white font-orbitron">510 CV</span>
+                        </div>
+
+                        <!-- Spec Item -->
+                        <div class="flex items-center justify-between p-5 rounded-2xl bg-zinc-900/50 border border-white/5 group hover:border-blue-600/30 transition-all duration-500">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Aceleração 0-100</span>
+                            </div>
+                            <span class="text-lg font-bold text-white font-orbitron">3.4 SEC</span>
+                        </div>
+
+                        <!-- Spec Item -->
+                        <div class="flex items-center justify-between p-5 rounded-2xl bg-zinc-900/50 border border-white/5 group hover:border-blue-600/30 transition-all duration-500">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.82.551l-1.129 1.13a1 1 0 001.312 1.496l1.435-1.026a2 2 0 011.622-.242l2.387.477a6 6 0 003.86-.517l.318-.158a6 6 0 013.86-.517l2.151.43a2 2 0 001.82-.551l1.129-1.13a1 1 0 00-1.312-1.496l-1.435 1.026a2 2 0 01-1.622.242z"/></svg>
+                                </div>
+                                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Velocidade Máxima</span>
+                            </div>
+                            <span class="text-lg font-bold text-white font-orbitron">318 KM/H</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-6 mt-auto">
+                        <button onclick="openProposalModal()" class="flex-1 bg-blue-600 text-white py-5 rounded-2xl font-bold text-[10px] tracking-[0.3em] hover:bg-blue-700 transition shadow-lg shadow-blue-600/20 uppercase">Interesse no Modelo</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Quick Links -->
     <section class="bg-[#f2f2f2] dark:bg-zinc-900 border-y border-gray-200 dark:border-zinc-800 py-12 px-6 transition-colors duration-300">
@@ -235,7 +300,7 @@
                         <div class="absolute inset-0 bg-blue-600/20 blur-3xl rounded-full scale-0 group-hover:scale-100 transition-transform duration-700"></div>
                         
                         <div class="relative overflow-hidden rounded-2xl shadow-2xl border border-gray-100 dark:border-zinc-800">
-                            <img src="assents/outdor.webp" alt="AutoElite Campaign" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-1000">
+                            <img src="assents/outdor.webp" alt="AutoElite Campaign" loading="lazy" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-1000">
                             
                             <!-- Digital Shine -->
                             <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -306,7 +371,7 @@
                 </div>
             </div>
             <div class="relative reveal">
-                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1000&q=80" alt="Serviços Exclusivos AutoElite" class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition duration-700">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1000&q=80" alt="Serviços Exclusivos AutoElite" loading="lazy" class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition duration-700">
                 <div class="stats-badge hidden lg:block">
                     <p class="text-4xl font-black">15+</p>
                     <p class="text-[10px] font-bold tracking-widest uppercase">Anos de Excelência</p>
@@ -656,9 +721,10 @@
     <!-- Professional Notification System -->
     <div id="notification-container" class="fixed top-24 right-6 z-[300] flex flex-col gap-4 pointer-events-none"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="webgl-effect.js"></script>
-    <script src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script defer src="car-renderer.js"></script>
+    <script defer src="script.js"></script>
 </body>
 </html>
